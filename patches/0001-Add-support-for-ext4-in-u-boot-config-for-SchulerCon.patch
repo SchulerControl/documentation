@@ -1,0 +1,25 @@
+From 190b33bb723689ed01ce4a417d21166d0599312c Mon Sep 17 00:00:00 2001
+From: Sebastian Schuler <s.schuler@schulercontrol.de>
+Date: Mon, 14 Sep 2015 10:23:47 +0200
+Subject: [PATCH 1/2] Add support for ext4 in u-boot config for SchulerControl
+ devices.
+
+---
+ include/configs/sc_sps_1.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/configs/sc_sps_1.h b/include/configs/sc_sps_1.h
+index 16d2e2d..365dfdd 100644
+--- a/include/configs/sc_sps_1.h
++++ b/include/configs/sc_sps_1.h
+@@ -23,6 +23,7 @@
+ #define CONFIG_CMD_CACHE
+ #define CONFIG_CMD_DHCP
+ #define CONFIG_CMD_EXT2
++#define CONFIG_CMD_EXT4
+ #define CONFIG_CMD_FAT
+ #define CONFIG_CMD_GPIO
+ #define CONFIG_CMD_MII
+-- 
+1.9.1
+

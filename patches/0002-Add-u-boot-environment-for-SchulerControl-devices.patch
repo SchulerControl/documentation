@@ -1,0 +1,43 @@
+From 0127499aa2004bfd42c0c41c19c8af9c2f7dd442 Mon Sep 17 00:00:00 2001
+From: Sebastian Schuler <s.schuler@schulercontrol.de>
+Date: Mon, 14 Sep 2015 11:09:26 +0200
+Subject: [PATCH 2/2] Add u-boot environment for SchulerControl devices.
+
+---
+ env.txt | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
+ create mode 100755 env.txt
+
+diff --git a/env.txt b/env.txt
+new file mode 100755
+index 0000000..9251cea
+--- /dev/null
++++ b/env.txt
+@@ -0,0 +1,24 @@
++addinit=setenv bootargs ${bootargs} panic=1 init=/usr/lib/systemd/systemd
++addtty=setenv bootargs ${bootargs} console=${consoledev},${baudrate}
++baudrate=115200
++bootcmd=run mmc_mmc
++bootdelay=1
++bootfile=uImage
++consoledev=ttyAMA0
++eth1addr=12:23:34:45:56:67
++eth2addr=12:23:34:45:56:68
++ethact=FEC0
++ethaddr=12:23:34:45:56:67
++loadkernel=ext4load mmc 0:2 ${loadaddr} uImage; ext4load mmc 0:2 ${fdt_loadaddr} imx28-sps1.dtb
++fdt_loadaddr=0x41000000
++fileaddr=42000000
++filesize=39C7
++loadaddr=0x42000000
++mmc_mmc=run loadkernel mmcargs addinit addtty ; bootm ${loadaddr} - ${fdt_loadaddr}
++mmcargs=setenv bootargs root=/dev/mmcblk0p3 rw rootwait rootflags=barrier=1,data=journal,commit=1
++stderr=serial
++stdin=serial
++stdout=serial
++update_sd_firmware=if mmc rescan ; then if tftp ${update_sd_firmware_filename} ; then setexpr fw_sz ${filesize} / 0x200 ; setexpr fw_sz ${fw_sz} + 1 ; mmc write ${loadaddr} 0x800 ${fw_sz} ; fi ; fi
++update_sd_firmware_filename=u-boot.sd
++ver=U-Boot 2014.10
+-- 
+1.9.1
+
