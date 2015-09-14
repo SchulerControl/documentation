@@ -42,7 +42,7 @@ Now is the time to actually build the kernel!. Use might want to use the option 
 $ make -j5 LOADADDR=0x40008000 uImage
 ```
 
-![Kernel build result](https://github.com/SchulerControl/documentation/linux/images/kernel_build_result.png)
+![Kernel build result](https://github.com/SchulerControl/documentation/blob/master/linux/images/kernel_build_result.png)
 
 
 **Congratulations! You just build your first kernel for SchulerControl devices!** The file 'arch/arm/boot/uImage' is your new kernel which we will include later into our root filesystem.
@@ -57,3 +57,4 @@ $ make imx28-sps1.dtb
 The file 'arch/arm/boot/dts/imx28-sps1.dtb' is the binary device tree file which we will include later into our root filesystem.
 
 Copy 'arch/arm/boot/uImage' and 'arch/arm/boot/dts/imx28-sps1.dtb' into a separate directory for later use.
+

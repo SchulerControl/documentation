@@ -1,4 +1,4 @@
-##Pre-requisites when building your own u-boot bootloader and linux kernel
+##Prerequisites when building your own u-boot bootloader and linux kernel
 
 ###How to read the tutorials:
 Terminal commands are marked by a '$' (dollar) sign. You can type these command or copy them into your terminal (without the dollar sign).
@@ -33,9 +33,9 @@ Start the installer and press enter twice to install into default directory (/op
 $ ./eldk-eglibc-i686-arm-toolchain-5.6.sh
 ```
 
-We will compile for ARM (armv5te) and therefor need to export some environment variables of ELDK (or different cross-compiler) into your terminal. To to so copy and paste all lines from the file '/opt/eldk-5.6/armv5te/environment-setup-armv5te-linux-gnueabi' into your terminal.
+We will compile for ARM (armv5te) and therefor need to export some environment variables of ELDK (or different cross-compiler) into your terminal. To do so copy and paste all lines from the file '/opt/eldk-5.6/armv5te/environment-setup-armv5te-linux-gnueabi' into your terminal.
 
-![ELDK environment variables](https://github.com/SchulerControl/documentation/setup/images/eldk_environment_variables.png)
+![ELDK environment variables](https://github.com/SchulerControl/documentation/blob/master/setup/images/eldk_environment_variables.png)
 
 
 ###Download additionally needed files
