@@ -16,7 +16,7 @@ $ cd linux-stable
 This long-term-release stable kernel branch is used in our production devices and it is proven to work. You might want to try a newer kernel if you're adventurus (and we'd love to hear from you how it worked out!). This command creates a new branch of that specific version in git and switches to it.
 
 >```
-$ git checkout -b sc_mxs_v3.10.79 v3.10.79
+$ git checkout -b sc_sps_1_v3.10.79 v3.10.79
 ```
 
 
@@ -24,7 +24,7 @@ $ git checkout -b sc_mxs_v3.10.79 v3.10.79
 The provided kernel config is configured to support all device drivers including some WiFi USB sticks and the recent systemd init system. We copy the previously downloaded files into our linux kernel directory (downloaded in setup tutorial from https://github.com/SchulerControl/additional_files.git).
 
 >```
-$ cp ../additional_files/sc_sps1_mxs.config .config
+$ cp ../additional_files/sc_sps_1_v3.10.79.config .config
 $ cp ../additional_files/imx28-sps1.dts arch/arm/boot/dts/imx28-sps1.dts
 ```
 
@@ -36,7 +36,7 @@ $ make ARCH=arm menuconfig
 ```
 
 ###Build kernel:
-Now is the time to actually build the kernel!. Use might want to use the option -jX (with X = number of cores + 1) to speed up the build process. For example, a quad core processor contains four logical cores plus one (4 + 1):
+Now is the time to actually build the kernel! Use might want to use the option -jX (with X = number of cores + 1) to speed up the build process. For example, a quad core processor contains four logical cores plus one (4 + 1):
 
 >```
 $ make -j5 LOADADDR=0x40008000 uImage
@@ -45,7 +45,7 @@ $ make -j5 LOADADDR=0x40008000 uImage
 ![Kernel build result](https://github.com/SchulerControl/documentation/blob/master/linux/images/kernel_build_result.png)
 
 
-**Congratulations! You just build your first kernel for SchulerControl devices!** The file 'arch/arm/boot/uImage' is your new kernel which we will include later into our root filesystem.
+**Congratulations! You just build your first kernel for SchulerControl devices!** The file 'scdevice/linux-stable/arch/arm/boot/uImage' is your new kernel which we will include later into our root filesystem.
 
 ###Build device tree file
 The last step is to build the specific kernel device tree file for our devices.
@@ -54,7 +54,5 @@ The last step is to build the specific kernel device tree file for our devices.
 $ make imx28-sps1.dtb
 ```
 
-The file 'arch/arm/boot/dts/imx28-sps1.dtb' is the binary device tree file which we will include later into our root filesystem.
-
-Copy 'arch/arm/boot/uImage' and 'arch/arm/boot/dts/imx28-sps1.dtb' into a separate directory for later use.
+The file 'scdevice/linux-stable/arch/arm/boot/dts/imx28-sps1.dtb' is the binary device tree file which we will include later into our root filesystem.
 

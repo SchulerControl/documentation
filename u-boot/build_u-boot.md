@@ -5,7 +5,7 @@ If you like to build u-boot from scratch, want to try a different version or do 
 
 
 ###Clone u-boot from denx.de:
-The bootloader used in all SchulerControl devices is u-boot where the devices are in mainline u-boot. All what's needed additionally are to files to enable support for ext4 filesystems and the pre-configured u-boot environment. Your current terminal directory shoud be 'scdevice'.
+The bootloader used in all SchulerControl devices is u-boot with support in mainline u-boot. All what's needed additionally are two files to enable support for ext4 filesystems and the pre-configured u-boot environment. Your current terminal directory shoud be 'scdevice'.
 
 >```
 $ git clone git://git.denx.de/u-boot.git u-boot/
@@ -43,7 +43,7 @@ Last step is to generate a bootable u-boot file. To do so we use the mxsboot too
 $ ./tools/mxsboot sd u-boot.sb u-boot.sd
 ```
 
-**Congratulations! You just build your first u-boot bootloader for SchulerControl devices!** The file 'u-boot.sd' is your new u-boot which we will include later into our root filesystem.
+**Congratulations! You just build your first u-boot bootloader for SchulerControl devices!** The file 'scdevice/u-boot/u-boot.sd' is your new u-boot which we will include later into our root filesystem.
 
 
 ###Generate u-boot environment
@@ -53,5 +53,5 @@ u-boot needs a special enviornment file which we generate with the following com
 $ cat env.txt | ./tools/mkenvimage -s 16384 -o env.img
 ```
 
-Copy 'u-boot.sd' and 'env.img' to a separate directory for later use.
+The file 'scdevice/u-boot/env.img' is the compiled u-boot environment used later in the root filesystem.
 
